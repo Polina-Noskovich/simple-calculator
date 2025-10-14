@@ -12,6 +12,7 @@ import {
 
 const themeToggleBtn = document.getElementById("theme-toggle-btn");
 const calculatorContainer = document.querySelector(".calculator-container");
+const reopenButton = document.getElementById("reopen-calculator");
 
 function toggleTheme(isDark) {
   if (isDark) {
@@ -50,7 +51,9 @@ trafficLights.addEventListener("click", (event) => {
     case "close":
       if (!isHidden) {
         calculatorContainer.classList.add("hidden");
-        reopenButton.classList.remove("hidden-reopen-button");
+        if (reopenButton) {
+          reopenButton.classList.remove("hidden-reopen-button");
+        }
         calculatorContainer.classList.remove("collapsed", "full-size");
       }
       break;
