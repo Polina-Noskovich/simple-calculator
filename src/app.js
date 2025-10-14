@@ -20,13 +20,12 @@ function toggleTheme(isDark) {
     document.body.classList.add("light-theme");
   }
 }
+toggleTheme(true);
 
 if (themeToggleBtn) {
-  toggleTheme(true);
-
   themeToggleBtn.addEventListener("click", () => {
-    const isDark = document.body.classList.contains("light-theme");
-    toggleTheme(!isDark);
+    const isLight = document.body.classList.contains("light-theme");
+    toggleTheme(isLight);
   });
 }
 
@@ -46,13 +45,12 @@ trafficLights.addEventListener("click", (event) => {
   if (!control) return;
 
   const isHidden = calculatorContainer.classList.contains("hidden");
-  const isCollapsed = calculatorContainer.classList.contains("collapsed");
-  const isFullSize = calculatorContainer.classList.contains("full-size");
 
   switch (control) {
     case "close":
-      calculatorContainer.classList.toggle("hidden");
       if (!isHidden) {
+        calculatorContainer.classList.add("hidden");
+        reopenButton.classList.remove("hidden-reopen-button");
         calculatorContainer.classList.remove("collapsed", "full-size");
       }
       break;
@@ -73,6 +71,13 @@ trafficLights.addEventListener("click", (event) => {
   }
 });
 
+if (reopenButton) {
+  reopenButton.addEventListener("click", () => {
+    calculatorContainer.classList.remove("hidden");
+    reopenButton.classList.add("hidden-reopen-button");
+  });
+}
+
 keys.addEventListener("click", (event) => {
   const { target } = event;
   const { action } = target.dataset;
@@ -81,7 +86,11 @@ keys.addEventListener("click", (event) => {
     return;
   }
 
-  if (target.classList.contains("key-operator")) {
+  if (calculatorContainer.classList.contains("hidden")) {
+    return;
+  }
+
+  if (target.classList.contains("key-operator") || action === "calculate") {
     handleOperator(action);
   } else if (target.classList.contains("key-function")) {
     switch (action) {
