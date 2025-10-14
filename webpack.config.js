@@ -29,6 +29,7 @@ module.exports = (env, argv) => {
         {
           test: /\.js$/,
           exclude: /node_modules/,
+          type: "javascript/auto",
           use: {
             loader: "babel-loader",
             options: {
