@@ -13,6 +13,9 @@
 *   Процент (%).
 *   Смена знака (+/-).
 
+**Полное описание задания доступно по ссылке:** 
+[Level 0: Simple Calculator - Полное Задание]([https://link-na-vashe-zadanie.com/calc-task](https://github.com/Polina-Noskovich/simple-calculator/blob/main/Innowise%20Lab%20Internship_%20Level%200_%20Simple%20calculator.pdf))
+
 **Ключевые технические требования:**
 1.  Использование чистого JavaScript (без jQuery, React, Vue, Mathjs и т.п.).
 2.  Запрет на использование `eval()` для обработки функций.
