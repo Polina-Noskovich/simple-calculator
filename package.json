@@ -10,7 +10,7 @@
         "start": "webpack serve --mode development",
         "build": "webpack --mode production",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d dist",
+        "deploy": "gh-pages -d dist --dotfiles",
         "prepare": "husky install"
     },
     "keywords": [],
