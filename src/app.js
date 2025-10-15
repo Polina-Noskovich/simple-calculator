@@ -14,6 +14,14 @@ const themeToggleBtn = document.getElementById("theme-toggle-btn");
 const calculatorContainer = document.querySelector(".calculator-container");
 const reopenButton = document.getElementById("reopen-calculator");
 
+const operatorMap = {
+  divide: "/",
+  multiply: "*",
+  subtract: "-",
+  add: "+",
+  "=": "=",
+};
+
 function toggleTheme(isDark) {
   if (isDark) {
     document.body.classList.remove("light-theme");
@@ -93,8 +101,15 @@ keys.addEventListener("click", (event) => {
     return;
   }
 
-  if (target.classList.contains("key-operator") || action === "calculate") {
-    handleOperator(action);
+  if (
+    target.classList.contains("key-operator") ||
+    target.classList.contains("key-equals")
+  ) {
+    const symbol = operatorMap[action];
+
+    if (symbol) {
+      handleOperator(symbol);
+    }
   } else if (target.classList.contains("key-function")) {
     switch (action) {
       case "clear":
